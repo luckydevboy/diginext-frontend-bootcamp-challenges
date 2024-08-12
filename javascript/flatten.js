@@ -11,11 +11,15 @@
  * @example flatten({"a": {"b": {"c": "d"}}}) => {"a.b.c": "d"}
  *
  */
-const flatten = (object, parentKey = '', result = {}) => {
+const flatten = (object, parentKey = "", result = {}) => {
   Object.keys(object).forEach((key) => {
     const fullKey = parentKey ? `${parentKey}.${key}` : key;
 
-    if (typeof object[key] === 'object' && !Array.isArray(object[key]) && object[key] !== null) {
+    if (
+      typeof object[key] === "object" &&
+      !Array.isArray(object[key]) &&
+      object[key] !== null
+    ) {
       flatten(object[key], fullKey, result);
     } else {
       result[fullKey] = object[key];
@@ -26,7 +30,6 @@ const flatten = (object, parentKey = '', result = {}) => {
 };
 
 module.exports = flatten;
-
 
 /**
  * Returns a nested object. Remember that the level of nesting is not specified.

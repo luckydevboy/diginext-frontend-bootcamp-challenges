@@ -61,4 +61,10 @@ const sortWorkingHours = (workingHours) => {
   return workingHours.sort(compareHours);
 };
 
+const workingHoursGroupByImpl = (workingHours) => {
+  return Object.groupBy(workingHours, ({ day_of_week }) => day_of_week);
+};
+
+console.log(workingHoursGroupByImpl(workingHours));
+
 module.exports = workingHoursProxy;
